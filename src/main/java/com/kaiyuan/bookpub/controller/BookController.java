@@ -42,13 +42,8 @@ public class BookController {
     }
 
     @RequestMapping(value = "/{isbn}", method = RequestMethod.GET)
-    public Map<String, Object> getBook(@PathVariable Isbn isbn) {
-        Book book = bookRepository.findBookByIsbn(isbn.getIsbn());
-
-        Map<String, Object> response = new LinkedHashMap<>();
-        response.put("message", "get book with isbn(" + isbn.getIsbn() + ")");
-        response.put("book", book);
-        return response;
+    public Book getBook(@PathVariable Isbn isbn) {
+        return bookRepository.findBookByIsbn(isbn.getIsbn());
     }
 
     @RequestMapping(value = "/{isbn}", method = RequestMethod.DELETE)
