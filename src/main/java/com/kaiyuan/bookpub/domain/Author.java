@@ -1,5 +1,7 @@
 package com.kaiyuan.bookpub.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
+    @JsonBackReference
     @OneToMany(mappedBy = "author")
     private List<Book> books;
 
