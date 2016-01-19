@@ -13,11 +13,15 @@ public class Book {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "author")
     private Author author;
     @ManyToOne
+    @JoinColumn(name = "publisher")
     private Publisher publisher;
 
     @ManyToMany
+    @JoinTable(joinColumns = {@JoinColumn(name = "books", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "reviewers", referencedColumnName = "id")})
     private List<Reviewer> reviewers;
 
     protected Book() {}
