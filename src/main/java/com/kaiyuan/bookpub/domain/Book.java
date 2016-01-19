@@ -18,7 +18,7 @@ public class Book {
     private Publisher publisher;
 
     @ManyToMany
-    private List<Publisher.Reviewer> reviewers;
+    private List<Reviewer> reviewers;
 
     protected Book() {}
 
@@ -73,11 +73,11 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public List<Publisher.Reviewer> getReviewers() {
+    public List<Reviewer> getReviewers() {
         return reviewers;
     }
 
-    public void setReviewers(List<Publisher.Reviewer> reviewers) {
+    public void setReviewers(List<Reviewer> reviewers) {
         this.reviewers = reviewers;
     }
 
