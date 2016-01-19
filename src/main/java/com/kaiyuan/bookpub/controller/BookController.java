@@ -3,6 +3,7 @@ package com.kaiyuan.bookpub.controller;
 
 import com.kaiyuan.bookpub.domain.Book;
 import com.kaiyuan.bookpub.domain.Publisher;
+import com.kaiyuan.bookpub.domain.Reviewer;
 import com.kaiyuan.bookpub.repository.AuthorRepository;
 import com.kaiyuan.bookpub.repository.BookRepository;
 import com.kaiyuan.bookpub.repository.PublisherRepository;
@@ -81,7 +82,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/{isbn}/reviewers", method = RequestMethod.GET)
-    public List<Publisher.Reviewer> getReviewers(@PathVariable("isbn") Book book) {
+    public List<Reviewer> getReviewers(@PathVariable("isbn") Book book) {
         return book.getReviewers();
     }
 
