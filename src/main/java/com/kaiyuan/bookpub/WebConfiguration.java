@@ -3,9 +3,8 @@ package com.kaiyuan.bookpub;
 
 import com.kaiyuan.bookpub.formatters.BookFormatter;
 import com.kaiyuan.bookpub.repository.BookRepository;
-//import org.apache.catalina.filters.RemoteIpFilter;
+import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,10 +23,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter{
     @Autowired
     private BookRepository bookRepository;
 
-//    @Bean
-//    public RemoteIpFilter remoteIpFilter() {
-//        return new RemoteIpFilter();
-//    }
+    @Bean
+    public RemoteIpFilter remoteIpFilter() {
+        return new RemoteIpFilter();
+    }
 
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
@@ -47,7 +46,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        System.out.println("interceptors here");
         registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/**");
     }
 

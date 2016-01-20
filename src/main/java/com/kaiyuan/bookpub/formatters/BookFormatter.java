@@ -16,7 +16,6 @@ public class BookFormatter implements Formatter<Book> {
 
     @Override
     public Book parse(String bookIdentifer, Locale locale) throws ParseException {
-        System.out.println("what");
         Book book = bookRepository.findBookByIsbn(bookIdentifer);
         return (book != null) ? book : bookRepository.findOne(Long.valueOf(bookIdentifer));
     }
