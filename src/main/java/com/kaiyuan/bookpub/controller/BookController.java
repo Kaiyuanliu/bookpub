@@ -12,6 +12,7 @@ import com.kaiyuan.bookpub.utils.IsbnEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -89,5 +90,12 @@ public class BookController {
     @RequestMapping(value = "/session", method = RequestMethod.GET)
     public String getSessionId(HttpServletRequest request) {
         return request.getSession().getId();
+    }
+
+    @RequestMapping(value = "/publisher/{id}", method = RequestMethod.GET)
+    public List<Book> getBooksByPublisher(@PathVariable("id") Long id) {
+        Publisher publisher = publisherRepository.findOne(id);
+        Assert.notNull(publisher);
+        return publisher.getBooks();
     }
 }
